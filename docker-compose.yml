@@ -1,0 +1,15 @@
+services:
+  agent002:
+    build:
+      context: ./backend
+      dockerfile: dockerfile
+    container_name: agent002
+    stdin_open: true
+    tty: true
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
